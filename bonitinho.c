@@ -23,9 +23,16 @@ int escritor(){
 	int file;
 	int escolhida;
 
-	for(int i=0; i<2; i++){
+	for(int i=0; i<100; i++){
 
-		file = escolher_ficheiro();
+		//file = escolher_ficheiro();
+
+		char nome[]="SO2014-0.txt";
+		int id_file = rand() % 5;
+		nome[INDICE_ID_FILE]+=id_file;
+
+		file=open(nome, O_WRONLY | O_CREAT);
+
 		escolhida = rand() % 10;
 
 		for(int k=0; k<1024; k++){
