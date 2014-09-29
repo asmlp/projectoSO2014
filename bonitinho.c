@@ -6,7 +6,7 @@
 
 #define INDICE_ID_FILE 7
 
-char cadeia[10][11]={"aaaaaaaaa\n","bbbbbbbbbb\n","cccccccccc\n","dddddddddd\n","eeeeeeeeee\n","ffffffffff\n","gggggggggg\n","hhhhhhhhhh\n","iiiiiiiiii\n","jjjjjjjjjj\n"};
+char cadeia[10][11]={"aaaaaaaaaa\n","bbbbbbbbbb\n","cccccccccc\n","dddddddddd\n","eeeeeeeeee\n","ffffffffff\n","gggggggggg\n","hhhhhhhhhh\n","iiiiiiiiii\n","jjjjjjjjjj\n"};
 
 
 int escolher_ficheiro(){
@@ -52,7 +52,6 @@ int main(){
 	srand(time(NULL));
 
 	escritor();
-
 
 	return 0;
 }
