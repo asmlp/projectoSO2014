@@ -25,7 +25,7 @@ int main(){
 		int id_file = rand() % 5;
 		nome[INDICE_ID_FILE]+=id_file;
 
-		file=open(nome, O_WRONLY | O_CREAT);
+		file=open(nome, O_WRONLY | O_CREAT, 0777);
 
 		escolhida = rand() % 10;
 
