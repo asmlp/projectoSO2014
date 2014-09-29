@@ -5,28 +5,27 @@
 #include <time.h>
 
 #define INDICE_ID_FILE 7
-//					  1234567890     1234567890     1234567890     1234567890     1234567890     1234567890     1234567890     1234567890     1234567890     1234567890
-char cadeia[10][12]={"aaaaaaaaaa\n","bbbbbbbbbb\n","cccccccccc\n","dddddddddd\n","eeeeeeeeee\n","ffffffffff\n","gggggggggg\n","hhhhhhhhhh\n","iiiiiiiiii\n","jjjjjjjjjj\n"};
 
-int main(){
+char cadeia[10][11]={"aaaaaaaaa\n","bbbbbbbbbb\n","cccccccccc\n","dddddddddd\n","eeeeeeeeee\n","ffffffffff\n","gggggggggg\n","hhhhhhhhhh\n","iiiiiiiiii\n","jjjjjjjjjj\n"};
 
-	srand(time(NULL));
 
-	//escritor();
+int escolher_ficheiro(){
 
+	char file[]="SO2014-0.txt";
+	int id_file = rand() % 5;
+	file[INDICE_ID_FILE]+=id_file;
+
+	return open(file, O_WRONLY | O_CREAT,0777);
+
+}
+
+int escritor(){
 	int file;
 	int escolhida;
 
 	for(int i=0; i<2; i++){
 
-		//file = escolher_ficheiro();
-
-		char nome[]="SO2014-0.txt";
-		int id_file = rand() % 5;
-		nome[INDICE_ID_FILE]+=id_file;
-
-		file=open(nome, O_WRONLY | O_CREAT, 0777);
-
+		file = escolher_ficheiro();
 		escolhida = rand() % 10;
 
 		for(int k=0; k<1024; k++){
@@ -34,7 +33,7 @@ int main(){
 			if(file < 0)
 		        printf("erro1 \n");   
 		 
-		    if(write(file,cadeia[escolhida],12) != 12)
+		    if(write(file,cadeia[escolhida],11) != 11)
 		        printf("erro2 \n");
 		    
 		}
@@ -44,3 +43,14 @@ int main(){
 	return 0;
 }
 
+
+
+int main(){
+
+	srand(time(NULL));
+
+	escritor();
+
+
+	return 0;
+}
