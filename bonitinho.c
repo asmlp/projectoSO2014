@@ -15,7 +15,7 @@ int escolher_ficheiro(){
 	int id_file = rand() % 5;
 	file[INDICE_ID_FILE]+=id_file;
 
-	return open(file, O_WRONLY | O_CREAT,0777);
+	return open(file, O_WRONLY | O_CREAT, 0644);
 
 }
 
@@ -23,21 +23,23 @@ int escritor(){
 	int file;
 	int escolhida;
 
-	for(int i=0; i<2; i++){
+	for(int i=0; i<5120; i++){
 
 		file = escolher_ficheiro();
 		escolhida = rand() % 10;
 
 		for(int k=0; k<1024; k++){
 
-			if(file < 0)
-		        printf("erro1 \n");   
+			if(file < 0){
+		        printf("erro1 \n"); 
+		        return -1;
+		    }
 		 
-		    if(write(file,cadeia[escolhida],11) != 11)
+		    if(write(file,cadeia[escolhida],11) != 11){
 		        printf("erro2 \n");
-		    
+		        return -1;
+		    }  
 		}
-
 		close(file);
 	}
 	return 0;
