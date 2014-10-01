@@ -15,7 +15,7 @@ int escolher_ficheiro(){
 	int id_file = rand() % 5;
 	file[INDICE_ID_FILE]+=id_file;
 
-	return open(file, O_WRONLY | O_CREAT, 0644);
+	return open(file, O_RDWR | O_CREAT, 0644);
 
 }
 
@@ -45,6 +45,11 @@ int escritor(){
 	return 0;
 }
 
+
+/*int leitor(){
+	int file;
+
+}*/
 
 
 int main(){
