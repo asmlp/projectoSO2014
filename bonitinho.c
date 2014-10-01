@@ -3,10 +3,11 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 #define INDICE_ID_FILE 7
-
-char cadeia[10][11]={"aaaaaaaaaa\n","bbbbbbbbbb\n","cccccccccc\n","dddddddddd\n","eeeeeeeeee\n","ffffffffff\n","gggggggggg\n","hhhhhhhhhh\n","iiiiiiiiii\n","jjjjjjjjjj\n"};
+//					  1234567890    1234567890    1234567890    1234567890    1234567890    1234567890    1234567890    1234567890    1234567890    1234567890  
+char cadeia[10][11]={"aaaaaaaaa\n","bbbbbbbbb\n","ccccccccc\n","ddddddddd\n","eeeeeeeee\n","fffffffff\n","ggggggggg\n","hhhhhhhhh\n","iiiiiiiii\n","jjjjjjjjj\n"};
 
 
 int escolher_ficheiro(){
@@ -46,17 +47,40 @@ int escritor(){
 }
 
 
-/*int leitor(){
+int leitor(){
 	int file;
+	char linha[11],primeira[11];
 
-}*/
+
+	file = escolher_ficheiro();
+
+	read(file,primeira,10);
+
+	for(int i=0,read(file,linha,10); linha!=EOF; i++,read(file,linha,10);){
+		if(strcmp(primeira,linha)){
+			return -1;
+		}
+	}
+
+	if(i==1024)
+		return 0;
+	
+	else
+		return -1;
+	
+}
 
 
 int main(){
 
 	srand(time(NULL));
 
-	escritor();
+	//printf("ESCRITOR: %d",escritor());
+
+	printf("LEITOR: %d",leitor());
 
 	return 0;
 }
+
+
+
