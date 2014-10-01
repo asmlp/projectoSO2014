@@ -48,21 +48,21 @@ int escritor(){
 
 
 int leitor(){
-	int file;
+	int file,i=0;
 	char linha[11],primeira[11];
-
 
 	file = escolher_ficheiro();
 
-	read(file,primeira,10);
+	read(file,primeira,11);
 
-	for(int i=0,read(file,linha,10); linha!=EOF; i++,read(file,linha,10);){
-		if(strcmp(primeira,linha)){
+	while( read(file,linha,11)>0 ){
+		
+		if(strcmp(primeira,linha))
 			return -1;
-		}
+		i++;
 	}
 
-	if(i==1024)
+	if(i==1023)
 		return 0;
 	
 	else
@@ -75,9 +75,9 @@ int main(){
 
 	srand(time(NULL));
 
-	//printf("ESCRITOR: %d",escritor());
+	printf("ESCRITOR: %d\n",escritor());
 
-	printf("LEITOR: %d",leitor());
+	printf("LEITOR: %d\n",leitor());
 
 	return 0;
 }
